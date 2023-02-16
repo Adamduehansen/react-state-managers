@@ -24,8 +24,7 @@ function TodoCreate({ onSubmit }: Props): JSX.Element {
 
   return (
     <form onSubmit={onSubmitHandler}>
-      <label htmlFor='todoname'>
-        Todo text
+      <div className='grid'>
         <input
           type='text'
           id='todoname'
@@ -36,10 +35,10 @@ function TodoCreate({ onSubmit }: Props): JSX.Element {
           required
           autoFocus
         />
-      </label>
-      <button type='submit' disabled={todoText === ''}>
-        Create
-      </button>
+        <button type='submit' disabled={todoText === ''}>
+          Create
+        </button>
+      </div>
     </form>
   );
 }
