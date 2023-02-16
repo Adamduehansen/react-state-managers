@@ -1,9 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TodoCreate from '../components/TodoCreate';
-import { createTodo } from '../lib/redux/todoReducer';
+import TodoList from '../components/TodoList';
+import { createTodo, selectTodos } from '../lib/redux/todoReducer';
 
 function Redux(): JSX.Element {
   const dispatch = useDispatch();
+  const todos = useSelector(selectTodos);
 
   function onCreate(text: string) {
     dispatch(createTodo(text));
@@ -13,6 +15,7 @@ function Redux(): JSX.Element {
     <section>
       <h1>Redux</h1>
       <TodoCreate onSubmit={onCreate} />
+      <TodoList todos={todos} />
     </section>
   );
 }

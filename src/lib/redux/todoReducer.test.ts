@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest';
 import todoReducer, {
   createTodo,
   deleteTodo,
+  selectTodos,
   TodoState,
   toggleTodo,
 } from './todoReducer';
@@ -129,5 +130,29 @@ describe('todoReducer', () => {
 
     // Assert
     expect(actualState).toEqual(expectedState);
+  });
+
+  test('should select todos in state', () => {
+    // Arrange
+    const currentState: TodoState = {
+      todos: [
+        {
+          id: 15,
+          completed: true,
+          text: 'any-text',
+        },
+        {
+          id: 16,
+          completed: true,
+          text: 'any-text',
+        },
+      ],
+    };
+
+    // Act
+    const todos = selectTodos(currentState);
+
+    // Assert
+    expect(todos).toEqual(currentState.todos);
   });
 });

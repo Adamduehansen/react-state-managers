@@ -48,4 +48,8 @@ const todoSlice = createSlice({
 
 export const { createTodo, deleteTodo, toggleTodo } = todoSlice.actions;
 
+export function selectTodos(state: TodoState): Todo[] {
+  return state.todos;
+}
+
 export default todoSlice.reducer;
