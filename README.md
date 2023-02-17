@@ -8,7 +8,7 @@ This is a repository where I try out different state managers for React with the
   5. Load todos from storage.
 
 ## Supported state managers 📝
-❌ Redux
+✅ Redux
 
 ❌ Zustand
 
