@@ -10,6 +10,10 @@ This is a repository where I try out different state managers for React with the
 ## Supported state managers 📝
 ✅ Redux
 
+A solid choice for application state, though getting started might seem combersome when setting up reducers. Another gotcha is that the component that renders the `Provider` component for the store cannot use `useDispatch` and `useSelector` hooks. In the case of this project the `Provider` component is added in main.tsx.
+
+Writing tests for reducers is easy which is nice.
+
 ❌ Zustand
 
 ❌ Jotai
