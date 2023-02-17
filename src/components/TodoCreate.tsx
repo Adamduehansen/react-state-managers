@@ -1,41 +1,39 @@
-import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface Props {
   onSubmit: (text: string) => void;
 }
 
+interface FormInputs {
+  text: string;
+}
+
 function TodoCreate({ onSubmit }: Props): JSX.Element {
-  const [todoText, setTodoText] = useState('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<FormInputs>();
 
-  const onTodoTextChane: ChangeEventHandler<HTMLInputElement> = function (
-    event
-  ) {
-    setTodoText(event.target.value);
-  };
-
-  const onSubmitHandler: FormEventHandler<HTMLFormElement> = function (event) {
-    event.preventDefault();
-    if (todoText === '') {
-      return;
-    }
-    onSubmit(todoText);
-    setTodoText('');
+  const onSubmitHandler: SubmitHandler<FormInputs> = function (data) {
+    onSubmit(data.text);
+    reset();
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={handleSubmit(onSubmitHandler)}>
       <div className='grid'>
         <input
-          type='text'
-          id='todoname'
-          name='todoname'
-          placeholder='Todo text'
-          value={todoText}
-          onChange={onTodoTextChane}
-          required
-          autoFocus
+          id='todotext'
+          placeholder='Enter a todo...'
+          aria-invalid={!isValid}
+          {...register('text', {
+            required: true,
+          })}
         />
-        <button type='submit' disabled={todoText === ''}>
+        <button type='submit' disabled={errors.text ? true : false}>
           Create
         </button>
       </div>

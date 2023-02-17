@@ -1,0 +1,22 @@
+.todoList {
+  padding-left: 0;
+}
+
+.todoListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.todoListItem div {
+  display: flex;
+  align-items: center;
+}
+
+.todoListItem button {
+  width: 50px;
+  padding: 10px;
+  height: 50px;
+  margin: 0;
+}

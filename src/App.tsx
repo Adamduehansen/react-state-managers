@@ -9,27 +9,23 @@ function App() {
           <h2>Choose an implementation below</h2>
         </hgroup>
         <nav>
-          <figure>
-            <ul>
-              {[
-                'redux',
-                'zustand',
-                'jotai',
-                'xstate',
-                'mobx',
-                'vltio',
-                'recoil',
-              ].map((link) => {
-                return (
-                  <li key={`nav_${link}`}>
-                    <Link to={link} role='button'>
-                      {link}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </figure>
+          <ul>
+            {[
+              'redux',
+              'zustand',
+              'jotai',
+              'xstate',
+              'mobx',
+              'vltio',
+              'recoil',
+            ].map((link) => {
+              return (
+                <li key={`nav_${link}`}>
+                  <Link to={link}>{link}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
       </header>
       <main className='container'>

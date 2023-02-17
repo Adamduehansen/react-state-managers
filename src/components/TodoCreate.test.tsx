@@ -4,15 +4,40 @@ import userEvent from '@testing-library/user-event';
 import TodoCreate from './TodoCreate';
 
 describe('TodoCreate', () => {
-  test('should have empty textbox on load', () => {
-    // Arrange
-    render(<TodoCreate onSubmit={vi.fn()} />);
+  describe('textbox', () => {
+    test('should be empty on load', () => {
+      // Arrange
+      render(<TodoCreate onSubmit={vi.fn()} />);
 
-    // Act
-    const textbox = screen.getByRole('textbox');
+      // Act
+      const textbox = screen.getByRole('textbox');
 
-    // Assert
-    expect(textbox).toHaveValue('');
+      // Assert
+      expect(textbox).toHaveValue('');
+    });
+
+    test('should be invalid when empty', () => {
+      // Arrange
+      render(<TodoCreate onSubmit={vi.fn()} />);
+
+      // Act
+      const textbox = screen.getByRole('textbox');
+
+      // Assert
+      expect(textbox).toBeInvalid();
+    });
+
+    test('should be invalid when only whitespace', () => {
+      // Arrange
+      render(<TodoCreate onSubmit={vi.fn()} />);
+
+      // Act
+      const textbox = screen.getByRole('textbox');
+      userEvent.type(textbox, '    ');
+
+      // Assert
+      expect(textbox).toBeInvalid();
+    });
   });
 
   describe('on submit', () => {
