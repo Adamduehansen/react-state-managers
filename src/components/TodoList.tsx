@@ -34,7 +34,7 @@ function TodoList({ todos, onToggle, onDelete }: Props): JSX.Element {
               <input
                 type='checkbox'
                 checked={completed}
-                onClick={makeTodoClickHandler(id)}
+                onChange={makeTodoClickHandler(id)}
               />
               <label>{text}</label>
             </div>

@@ -21,6 +21,7 @@ describe('TodoList', () => {
           },
         ]}
         onToggle={vi.fn()}
+        onDelete={vi.fn()}
       />
     );
 
@@ -51,15 +52,14 @@ describe('TodoList', () => {
           },
         ]}
         onToggle={onToggleMock}
+        onDelete={vi.fn()}
       />
     );
 
     // Act
-    const todoItemToClick = screen.getByRole('listitem', {
-      name: 'any-todo-1',
-    });
+    const todoItemToClick = screen.getAllByRole('checkbox');
 
-    await userEvent.click(todoItemToClick);
+    await userEvent.click(todoItemToClick[0]);
 
     // Assert
     expect(onToggleMock).toHaveBeenCalledWith<[number]>(0);
@@ -68,7 +68,7 @@ describe('TodoList', () => {
   test('should render message when list is empty', () => {
     // Arrange
     const onToggleMock = vi.fn();
-    render(<TodoList todos={[]} onToggle={onToggleMock} />);
+    render(<TodoList todos={[]} onToggle={onToggleMock} onDelete={vi.fn()} />);
 
     // Act
     const emptyStateText = screen.getByText(/no todos/i);
