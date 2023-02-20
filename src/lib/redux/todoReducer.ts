@@ -52,4 +52,8 @@ export function selectTodos(state: TodoState): Todo[] {
   return state.todos;
 }
 
+export function selectCompletedTodos(state: TodoState): Todo[] {
+  return state.todos.filter((todo) => todo.completed);
+}
+
 export default todoSlice.reducer;

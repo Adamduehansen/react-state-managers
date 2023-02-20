@@ -3,6 +3,7 @@ import Todo from '../Todo';
 
 interface TodoState {
   todos: Todo[];
+  completedTodos: () => Todo[];
   createTodo: (text: string) => void;
   toggleTodo: (id: number) => void;
   deleteTodo: (id: number) => void;
@@ -33,9 +34,12 @@ function createTodo(
   };
 }
 
-const useTodoStore = create<TodoState>()((set) => {
+const useTodoStore = create<TodoState>()((set, get) => {
   return {
     todos: [],
+    completedTodos: function () {
+      return get().todos.filter((todo) => todo.completed);
+    },
     createTodo: createTodo(set),
     toggleTodo: function (id) {
       return set((state) => {
