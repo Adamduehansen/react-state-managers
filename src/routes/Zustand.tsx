@@ -12,7 +12,7 @@ function Zustand(): JSX.Element {
 
   return (
     <section>
-      <h1>Zustand</h1>
+      <h2>Zustand</h2>
       <TodoCreate onSubmit={onCreate} />
       <TodoList
         todos={store.todos}

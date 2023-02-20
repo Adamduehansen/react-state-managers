@@ -10,7 +10,7 @@ const initialState: TodoState = {
 };
 
 function createTodoReducer(state: TodoState, action: PayloadAction<string>) {
-  const id = Math.max(...state.todos.map((o) => o.id + 1), 0);
+  const id = Math.max(...state.todos.map((todo) => todo.id + 1), 0);
   state.todos.push({
     id: id,
     text: action.payload,

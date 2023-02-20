@@ -21,7 +21,7 @@ function Redux(): JSX.Element {
 
   return (
     <section>
-      <h1>Redux</h1>
+      <h2>Redux</h2>
       <TodoCreate onSubmit={onCreate} />
       <TodoList
         todos={todos}

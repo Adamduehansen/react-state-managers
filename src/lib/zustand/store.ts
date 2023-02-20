@@ -24,7 +24,7 @@ function createTodo(
         todos: [
           ...state.todos,
           {
-            id: Math.max(...state.todos.map((o) => o.id + 1), 0),
+            id: Math.max(...state.todos.map((todo) => todo.id + 1), 0),
             text: text,
             completed: false,
           },

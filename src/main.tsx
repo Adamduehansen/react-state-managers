@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import store from './lib/redux/store';
+import Jotai from './routes/Jotai';
 import NotImplemented from './routes/NotImplemented';
 import Redux from './routes/Redux';
 import Zustand from './routes/Zustand';
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/jotai',
-        element: <NotImplemented />,
+        element: <Jotai />,
       },
       {
         path: '/xstate',
