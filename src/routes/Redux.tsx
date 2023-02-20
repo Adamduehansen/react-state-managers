@@ -15,22 +15,14 @@ function Redux(): JSX.Element {
   const todos = useSelector(selectTodos);
   const completedTodos = useSelector(selectCompletedTodos);
 
-  function onCreate(text: string) {
-    dispatch(createTodo(text));
-  }
-
   return (
     <section>
       <h2>Redux</h2>
-      <TodoCreate onSubmit={onCreate} />
+      <TodoCreate onSubmit={(text) => dispatch(createTodo(text))} />
       <TodoList
         todos={todos}
-        onToggle={(id) => {
-          dispatch(toggleTodo(id));
-        }}
-        onDelete={(id) => {
-          dispatch(deleteTodo(id));
-        }}
+        onToggle={(id) => dispatch(toggleTodo(id))}
+        onDelete={(id) => dispatch(deleteTodo(id))}
       />
       <TodoProgress max={todos.length} value={completedTodos.length} />
     </section>

@@ -6,14 +6,10 @@ import useTodoStore from '../lib/zustand/store';
 function Zustand(): JSX.Element {
   const store = useTodoStore();
 
-  function onCreate(text: string) {
-    store.createTodo(text);
-  }
-
   return (
     <section>
       <h2>Zustand</h2>
-      <TodoCreate onSubmit={onCreate} />
+      <TodoCreate onSubmit={store.createTodo} />
       <TodoList
         todos={store.todos}
         onToggle={store.toggleTodo}
